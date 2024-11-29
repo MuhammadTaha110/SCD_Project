@@ -59,4 +59,16 @@ public function assign(Request $request, $id)
     return redirect()->route('tasks.index')->with('success', 'Task assigned successfully!');
 }
 
+
+public function search(Request $request)
+{
+    $searchTerm = $request->input('search');
+    
+    // Search for tasks that match the search term in the title
+    $tasks = Task::where('title', 'LIKE', '%' . $searchTerm . '%')->get();
+
+    return view('tasks.index', compact('tasks'))->with('searchTerm', $searchTerm);
+}
+
+
 }

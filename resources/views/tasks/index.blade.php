@@ -1,8 +1,18 @@
-@extends('layout') 
+@extends('layout')
 
 @section('content')
 <div class="container view-task">
     <h1 class="view-task-heading">Task List</h1>
+
+    <!-- Search Form -->
+    <form action="{{ route('tasks.search') }}" method="GET" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="search" class="form-control" placeholder="Search tasks..." value="{{ request('search') }}">
+            <button class="btn btn-primary" type="submit" title="Search">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </form>
 
     @if (session('success'))
         <div class="alert alert-success">

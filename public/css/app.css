@@ -318,6 +318,92 @@ padding-bottom: 40px;
     width: 90%;
 }
 
+/* General Styling for Service Cards */
+.service-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    height: 250px;
+}
+
+/* Gradient Backgrounds for Each Card */
+.service-card.create,
+.mission-section {
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Purple to Blue */
+}
+
+.service-card.view,
+.vision-section {
+    background: linear-gradient(135deg, #ff6a00, #ee0979); /* Orange to Red */
+}
+
+.service-card.update,
+.values-section {
+    background: linear-gradient(135deg, #43cea2, #185a9d); /* Green to Blue */
+}
+
+.service-card.delete {
+    background: linear-gradient(135deg, #ff4b1f, #ff9068); /* Dark Red to Light Coral */
+}
+
+.service-card.assign-task {
+    background: linear-gradient(135deg, #f7971e, #ffd200); /* Yellow to Light Yellow */
+}
+
+.service-card.track-task {
+    background: linear-gradient(135deg, #8e2de2, #4a00e0); /* Purple to Deep Purple */
+}
+
+/*About Us*/
+
+.about-us h2, .about-us h3 {
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.about-us p {
+    line-height: 1.6;
+    color: var(--text-color);
+    width: 90%;
+}
+
+.about-us ul {
+    padding-left: 20px;
+}
+
+.about-us ul li {
+    color: #555;
+}
+
+.about-us img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+
+/* Icons and Headings Styling */
+.service-card i {
+    color: white;
+}
+
+.service-card h4 {
+    font-weight: 600;
+    margin-top: 10px;
+    color: white;
+}
+
+.service-card p {
+    color: white;
+    width: 90%;
+}
+
+
 /*Features*/
 
 .features{

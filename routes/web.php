@@ -3,11 +3,17 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\PageController;
+
 
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/tasks/search', [TaskController::class, 'search'])->name('tasks.search');
+Route::get('/about', [PageController::class, 'about'])->name('about');
+
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
