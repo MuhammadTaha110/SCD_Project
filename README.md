@@ -76,38 +76,6 @@ Filter Tasks: Use the dropdowns and search bar to filter tasks by priority, stat
 
 Update Status: Change the status of tasks directly from the task table.
 
-Routes
-
-Method
-
-URI
-
-Action
-
-GET
-
-/tasks/assigned
-
-Show assigned tasks
-
-POST
-
-/tasks
-
-Create a new task
-
-PUT
-
-/tasks/{id}
-
-Update task details or status
-
-DELETE
-
-/tasks/{id}
-
-Delete a task
-
 Folder Structure
 
 - app/
