@@ -1,3 +1,155 @@
+Task Manager Application
+
+Overview
+
+The Task Manager Application is a Laravel-based project that allows users to create, assign, and manage tasks efficiently. It includes features such as task filtering, search functionality, and status updates to ensure seamless task tracking.
+
+Features
+
+Task Management: Add, edit, and delete tasks.
+
+Task Assignment: Assign tasks to specific users.
+
+Search and Filter: Search tasks by title, description, and filter tasks by priority, status, and assigned user.
+
+Dynamic Status Updates: Update task statuses directly from the task list.
+
+Priority Labels: Visual indicators for task priority (High, Medium, Low).
+
+Technologies Used
+
+Backend: Laravel 10
+
+Frontend: Blade Templates, Bootstrap 5
+
+Database: MySQL
+
+Version Control: Git
+
+Installation
+
+Clone the Repository:
+
+git clone https://github.com/username/task-manager.git
+cd task-manager
+
+Install Dependencies:
+
+composer install
+npm install
+
+Environment Configuration:
+
+Copy .env.example to .env.
+
+cp .env.example .env
+
+Update database credentials in the .env file:
+
+DB_DATABASE=your_database
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+
+Generate Application Key:
+
+php artisan key:generate
+
+Run Database Migrations:
+
+php artisan migrate
+
+Seed Sample Data (Optional):
+
+php artisan db:seed
+
+Run the Application:
+
+php artisan serve
+
+Access the application at http://localhost:8000.
+
+Usage
+
+Task Assignment: Go to /tasks/assigned to view tasks assigned to you.
+
+Filter Tasks: Use the dropdowns and search bar to filter tasks by priority, status, and assigned user.
+
+Update Status: Change the status of tasks directly from the task table.
+
+Routes
+
+Method
+
+URI
+
+Action
+
+GET
+
+/tasks/assigned
+
+Show assigned tasks
+
+POST
+
+/tasks
+
+Create a new task
+
+PUT
+
+/tasks/{id}
+
+Update task details or status
+
+DELETE
+
+/tasks/{id}
+
+Delete a task
+
+Folder Structure
+
+- app/
+  - Http/
+    - Controllers/
+      - TaskController.php
+  - Models/
+    - Task.php
+    - User.php
+- resources/
+  - views/
+    - tasks/
+      - assigned.blade.php
+- routes/
+  - web.php
+- database/
+  - migrations/
+- public/
+
+Troubleshooting
+
+Common Errors:
+
+Undefined Variable $users
+Ensure the assignedTasks method in TaskController is passing $users to the view.
+
+Method Not Found Error:
+Verify that the assignedTasks method is defined and linked properly in web.php.
+
+
+Author
+
+Muhamad Taha Talib
+
+Contributions
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Contact
+
+Email: mtahatalib110@gmail.com
+
 Google Chrome:
 1st Device Laptop
 
