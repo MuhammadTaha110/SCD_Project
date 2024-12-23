@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container view-task">
-    <h1 class="view-task-heading">My Tasks</h1>
+    <h1 class="view-task-heading">Tasks Assigned by You</h1>
 
     @if ($tasks->isEmpty())
         <p>You have not assigned any tasks yet.</p>
@@ -18,7 +18,6 @@
                     <th>Priority</th>
                     <th>Assigned To</th>
                     <th>Status</th>
-                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,16 +38,6 @@
                             </span>
                         </td>
                         <td>
-                            <form action="{{ route('tasks.updateStatus', $task->id) }}" method="POST">
-                                @csrf
-                                @method('PUT')
-                                <select name="status" class="form-control" onchange="this.form.submit()">
-                                    <option value="pending" {{ $task->status == 'pending' ? 'selected' : '' }}>Pending</option>
-                                    <option value="in_progress" {{ $task->status == 'in_progress' ? 'selected' : '' }}>In Progress</option>
-                                    <option value="completed" {{ $task->status == 'completed' ? 'selected' : '' }}>Completed</option>
-                                    <option value="overdue" {{ $task->status == 'overdue' ? 'selected' : '' }}>Overdue</option>
-                                </select>
-                            </form>
                         </td>
                     </tr>
                 @endforeach

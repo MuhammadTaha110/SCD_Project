@@ -11,10 +11,10 @@
         <a href="{{ route('tasks.index') }}" class="text-white text-decoration-none">View Task</a>
       </div>
       <div class="col-md-2 mb-2">
-        <a href="{{ route('tasks.assigned') }}" class="text-white text-decoration-none">My Task</a>
+        <a href="{{ route('tasks.myTasks') }}" class="text-white text-decoration-none">My Task</a>
       </div>
       <div class="col-md-2 mb-2">
-        <a href="{{ route('tasks.myTasks') }}" class="text-white text-decoration-none">Track Task</a>
+        <a href="{{ route('tasks.assigned') }}" class="text-white text-decoration-none">Track Task</a>
       </div>
     </div>
     <hr class="border-light">

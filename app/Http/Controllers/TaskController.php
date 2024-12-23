@@ -228,6 +228,43 @@ public function showAssignedTasks(Request $request)
 }
 
 
+public function assignedTasks(Request $request)
+    {
+        // Fetching users for the 'Assigned To' dropdown
+        $users = User::all();
+
+        // Building the query for tasks with optional filters
+        $tasks = Task::query();
+
+        // Search filter
+        if ($request->has('search') && $request->search) {
+            $tasks = $tasks->where('title', 'like', '%' . $request->search . '%')
+                           ->orWhere('description', 'like', '%' . $request->search . '%');
+        }
+
+        // Priority filter
+        if ($request->has('priority') && $request->priority) {
+            $tasks = $tasks->where('priority', $request->priority);
+        }
+
+        // Status filter
+        if ($request->has('status') && $request->status) {
+            $tasks = $tasks->where('status', $request->status);
+        }
+
+        // Assigned to filter
+        if ($request->has('assigned_to') && $request->assigned_to) {
+            $tasks = $tasks->where('assigned_to', $request->assigned_to);
+        }
+
+        // Fetch tasks after applying filters
+        $tasks = $tasks->get();
+
+        // Return the view with tasks and users data
+        return view('tasks.assigned', compact('tasks', 'users'));
+    }
+
+
 
 
 
