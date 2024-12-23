@@ -15,6 +15,9 @@ class Task extends Model
         'description',
         'due_date',
         'priority',
+        'assigned_by',
+        'assigned_to',
+        'status',
     ];
 
     protected $casts = [
@@ -25,5 +28,16 @@ class Task extends Model
 {
     return $this->belongsTo(User::class);
 }
+
+public function assignedBy()
+{
+    return $this->belongsTo(User::class, 'assigned_by');
+}
+
+public function assignedTo()
+{
+    return $this->belongsTo(User::class, 'assigned_to');
+}
+
 
 }

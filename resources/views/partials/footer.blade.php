@@ -1,14 +1,20 @@
 <footer class="bg-dark text-white py-3 mt-auto">
   <div class="container text-center">
-    <div class="row">
-      <div class="col-md-4 mb-2">
-        <a href="{{ route('layout') }}" class="text-white text-decoration-none">Home Page</a>
+    <div class="row justify-content-center">
+      <div class="col-md-2 mb-2">
+        <a href="{{ route('home') }}" class="text-white text-decoration-none">Home Page</a>
       </div>
-      <div class="col-md-4 mb-2">
+      <div class="col-md-2 mb-2">
         <a href="{{ route('tasks.create') }}" class="text-white text-decoration-none">Create Task</a>
       </div>
-      <div class="col-md-4 mb-2">
+      <div class="col-md-2 mb-2">
         <a href="{{ route('tasks.index') }}" class="text-white text-decoration-none">View Task</a>
+      </div>
+      <div class="col-md-2 mb-2">
+        <a href="{{ route('tasks.assigned') }}" class="text-white text-decoration-none">My Task</a>
+      </div>
+      <div class="col-md-2 mb-2">
+        <a href="{{ route('tasks.myTasks') }}" class="text-white text-decoration-none">Track Task</a>
       </div>
     </div>
     <hr class="border-light">

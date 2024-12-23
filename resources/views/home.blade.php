@@ -4,110 +4,85 @@
 
 @section('content')
 <main class="container">
-    <section class="top row">
-        <div class='col inner-container'>
-            <h1>Manage Your Tasks!</h1>
-            <p>Designed to streamline productivity by helping users organize, prioritize, and track tasks all in one place.</p>
-            <img src="{{ asset('assets/images/Character1.png') }}" alt="">
-        </div>
+    <section >
+        <div class="col-12  mb-4">
+                <div class="service-card manage text-center">
+                    <i class="fa-solid fa-window-restore fa-3x mb-3"></i>
+                    <h4>Manage Your Tasks!</h4>
+                    <p>Designed to streamline productivity by helping users organize, prioritize, and track tasks all in one place.</p>
+                </div>
+            </div>
+        
     </section>
 
-    <section class="below row">
-        <div class="inner-container create-task">
-            <a href="{{ route('tasks.create') }}" class="text-decoration-none text-dark">
-                <h4>Create Tasks</h4>
-                <img src="{{ asset('assets/images/tasks3.png') }}" alt="">
-            </a>
-        </div>
-        <div class="inner-container view-task">
-            <a href="{{ route('tasks.index') }}" class="text-decoration-none text-dark">
-                <h4>View Tasks</h4>
-                <img src="{{ asset('assets/images/tasks1.png') }}" alt="">
-            </a>
-        </div>
-    </section>
-
- <!-- About Section -->
-
- <h2 class="text-center mb-4 reasons">REASONS TO CHOOSE US!</h2>
-
-
-<section class="about row my-5">
-
-    <div class="col-12 col-md-8 offset-md-2"> <!-- Centering on larger screens -->
-        <div class="row mb-3 align-items-center">
-            <div class="col-auto">
-                <i class="fas fa-check-circle fa-3x text-green"></i> <!-- Large Icon -->
-            </div>
-            <div class="col">
-                <h5 class='about-heading'>Intuitive Task Creation</h5>
-                <p>Easily create and customize your tasks to fit your workflow.</p>
-            </div>
-        </div>
-        <hr> <!-- Separator Line -->
-
-        <div class="row mb-3 align-items-center">
-            <div class="col-auto">
-                <i class="fas fa-bell fa-3x text-warning"></i> <!-- Large Icon -->
-            </div>
-            <div class="col">
-                <h5 class='about-heading'>Deadline Reminders</h5>
-                <p>Stay on top of your deadlines with timely reminders.</p>
-            </div>
-        </div>
-        <hr> <!-- Separator Line -->
-
-        <div class="row mb-3 align-items-center">
-            <div class="col-auto">
-                <i class="fas fa-star fa-3x text-info"></i> <!-- Large Icon -->
-            </div>
-            <div class="col">
-                <h5 class='about-heading'>Priority Tagging</h5>
-                <p>Organize your tasks by priority to focus on what matters most.</p>
-            </div>
-        </div>
-    </div>
-
-</section>
-
-<!-- Features Section -->
-<section class="features my-5">
-    <h2 class="text-center mb-4">Our Features</h2>
+    <section class="services my-5">
+    <h2 class="text-center mb-4">Our Services</h2>
     <div class="container">
-        <div class="row desc">
-            <!-- Create Task Feature -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                <div class="text-center">
-                    <i class="fas fa-plus-circle fa-3x text-blue mb-2"></i>
-                    <h5>Create Task</h5>
-                    <p>Easily create and customize tasks to suit your workflow.</p>
+        <div class="row">
+            <!-- Create Task -->
+            <div class="col-12 col-md-6 mb-4">
+                <div class="service-card create text-center">
+                <a href="{{ route('tasks.create') }}" class="links">
+                    <i class="fas fa-plus-circle fa-3x mb-3"></i>
+                    <h4>Create Task</h4>
+                    <p>Quickly add new tasks and set details like priority and deadlines to organize your work effortlessly.</p>
+                    </a>
                 </div>
             </div>
-            
-            <!-- View Task Feature -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                <div class="text-center">
-                    <i class="fas fa-eye fa-3x mb-2 text-green"></i>
-                    <h5>View Task</h5>
-                    <p>Effortlessly view all your tasks at a glance and stay organized.</p>
+
+            <!-- View Task -->
+            <div class="col-12 col-md-6 mb-4">
+                <div class="service-card view text-center">
+                <a href="{{ route('tasks.index') }}" class="links">
+                    <i class="fas fa-eye fa-3x mb-3"></i>
+                    <h4>View Task</h4>
+                    <p>Get a clear overview of all your tasks in one place and stay on top of your work.</p>
+                    </a>
                 </div>
             </div>
-            
-            <!-- Assign Task Feature -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                <div class="text-center">
-                    <i class="fas fa-user-check fa-3x text-warning mb-2"></i>
-                    <h5>Assign Task</h5>
-                    <p>Delegate tasks easily to team members.</p>
+
+            <!-- Update Task -->
+            <div class="col-12 col-md-6 mb-4">
+                <div class="service-card update text-center">
+                <a href="{{ route('tasks.index') }}" class="links">
+                    <i class="fas fa-edit fa-3x mb-3"></i>
+                    <h4>Update Task</h4>
+                    <p>Easily make adjustments to your tasks as requirements change and stay adaptable.</p>
+                    </a>
                 </div>
             </div>
-            
-            <!-- Track Assigned Task Feature -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                <div class="text-center">
-                    <i class="fas fa-tasks fa-3x text-info mb-2"></i>
-                    <h5>Track Assigned Task</h5>
-                    <p>Monitor progress on assigned tasks of team members.</p>
+
+            <!-- Delete Task -->
+            <div class="col-12 col-md-6 mb-4">
+                <div class="service-card delete text-center">
+                <a href="{{ route('tasks.index') }}" class="links">
+                    <i class="fas fa-trash-alt fa-3x mb-3"></i>
+                    <h4>Delete Task</h4>
+                    <p>Remove completed or obsolete tasks to keep your workspace clean and organized.</p>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- Assign Task -->
+            <div class="col-12 col-md-6 mb-4">
+                <div class="service-card assign-task text-center">
+                <a href="{{ route('tasks.myTasks') }}" class="links">
+                    <i class="fas fa-user-check fa-3x mb-3"></i>
+                    <h4> View Assigned Task</h4>
+                    <p>Delegate tasks to team members, ensuring everyone knows their responsibilities.</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Track Task -->
+            <div class="col-12 col-md-6 mb-4">
+                <div class="service-card track-task text-center">
+                <a href="{{ route('tasks.assigned') }}" class="links">
+                    <i class="fas fa-tasks fa-3x mb-3"></i>
+                    <h4>Track Task</h4>
+                    <p>Monitor the progress of assigned tasks and keep projects on track efficiently.</p>
+                    </a>
                 </div>
             </div>
         </div>
@@ -115,7 +90,7 @@
 </section>
 
 
-
+ 
 
 
     <!-- Contact Section -->

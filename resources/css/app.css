@@ -332,11 +332,6 @@ padding-bottom: 40px;
 }
 
 /* Gradient Backgrounds for Each Card */
-
-.service-card.manage,
-.mission-section{
-background: linear-gradient(135deg, #00DBDE, #FC00FF); /* Orange to Red */
-}
 .service-card.create,
 .mission-section {
     background: linear-gradient(135deg, #6a11cb, #2575fc); /* Purple to Blue */
@@ -489,7 +484,7 @@ background: linear-gradient(135deg, #00DBDE, #FC00FF); /* Orange to Red */
 }
 
 .submit-btn {
-  background: linear-gradient(135deg, #00DBDE, #FC00FF); /* Orange to Red */
+  background: linear-gradient(190deg, rgb(0, 0, 0) 15%, var(--secondary-color) 100%);
   color: var(--text-color);
   width: 100%;
   padding: 10px;
@@ -608,80 +603,6 @@ background: linear-gradient(135deg, #00DBDE, #FC00FF); /* Orange to Red */
     min-height: 100vh; /* This ensures the wrapper takes at least the full height of the viewport */
 }
 
-.status-label {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 15px;
-    color: white;
-    font-weight: bold;
-    text-transform: capitalize;
-}
-
-.status-label.pending {
-    border: 2px solid #f0ad4e; 
-    color: #f0ad4e;
-    border-radius: 15px;
-    background-color: #fffffe; 
-}
-
-.status-label.completed {
-    background-color:#fffffe; 
-    border: 2px solid #5cb85c; 
-    color: #5cb85c;
-    border-radius: 15px;
-
-}
-
-.status-label.in_progress {
-    border: 2px solid #5bc0de; 
-    color: #5bc0de;
-    background-color: #fffffe;
-    border-radius: 15px;
-
-}
-
-.status-label.overdue {
-    background-color: #d9534f; /* Red for overdue */
-}
-
-
-
-.card-container{
-    padding: 20px;
-}
-
-.card {
-    border-radius: 12px;
-}
-
-.card-body {
-    padding: 2rem;
-}
-
-.btn {
-    border-radius: 25px;
-    padding: 12px;
-    font-size: 16px;
-    background-color: var(--secondary-color);
-}
-
-.form-control {
-    border-radius: 25px;
-}
-
-.text-center {
-    margin-top: 20px;
-}
-
-.alert {
-    border-radius: 5px;
-}
-
-.card.shadow-lg {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-
 main {
     flex: 1; /* This allows the main section to take the available space */
 }
@@ -691,142 +612,6 @@ main {
     color: white; /* Example text color */
     text-align: center;
     padding: 10px; /* Example padding */
-}
-
-
-/*Login*/
-
-.login-container {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(45deg, #000000, #A400B7);
-    padding: 1rem;
-}
-
-.form-container {
-    background-color: var(--shadow-color);
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 24rem;
-    width: 100%;
-}
-
-.logo-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-}
-
-.logo {
-    width: 4rem;
-    height: 4rem;
-}
-
-.status-message {
-    margin-bottom: 1rem;
-}
-
-.form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.label {
-    font-weight: 600;
-    color: #4a4a4a;
-    margin-bottom: 0.5rem;
-}
-
-.input {
-    border: 1px solid #d1d5db;
-    border-radius: 0.375rem;
-    padding: 0.5rem;
-    width: 100%;
-    transition: border-color 0.2s ease-in-out;
-}
-
-.input:focus {
-    border-color: #4f46e5;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
-}
-
-.error-message {
-    color: #e11d48;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-}
-
-.checkbox-group {
-    display: flex;
-    align-items: center;
-}
-
-.checkbox {
-    margin-right: 0.5rem;
-}
-
-.checkbox-label {
-    font-size: 0.875rem;
-    color: #4a4a4a;
-}
-
-.form-actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.forgot-password {
-    font-size: 0.875rem;
-    color: #4f46e5;
-    text-decoration: none;
-    transition: color 0.2s ease-in-out;
-}
-
-.forgot-password:hover {
-    color: #3730a3;
-}
-
-.login-button {
-    padding: 0.5rem 1rem;
-    background: #9f48e5;
-    color: white;
-    font-weight: 600;
-    border: none;
-    border-radius: 0.375rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-}
-
-.login-button:hover {
-    background: #3730a3;
-}
-
-
-.links{
-    text-decoration: none;
-}
-
-
-.btn-warning{
-    border: 2px solid #62006b; 
-    background-color: #eda0e8;
-}
-
-.btn-danger{
-    border: 2px solid #dc3545; 
-    background-color: #f2c6cc;
-    color: #ae1b29;
 }
 
 
@@ -850,7 +635,7 @@ main {
     h1 {
         margin-left: 0;
         margin-top: 20px;
-        font-size: 18px;
+        font-size: 22px;
         -webkit-text-stroke: 1px black; /* Outline color and thickness */
     }
     h4 {

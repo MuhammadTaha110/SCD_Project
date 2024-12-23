@@ -66,66 +66,96 @@
                 </blockquote>
             </div>
         </div>
-    </section><section class="services my-5">
-    <h2 class="text-center mb-4">Our Services</h2>
+    </section>
+
+    <!-- About Section -->
+
+ <h2 class="text-center mb-4 reasons">REASONS TO CHOOSE US!</h2>
+
+
+<section class="about row my-5">
+
+    <div class="col-12 col-md-8 offset-md-2"> <!-- Centering on larger screens -->
+        <div class="row mb-3 align-items-center">
+            <div class="col-auto">
+                <i class="fas fa-check-circle fa-3x text-green"></i> <!-- Large Icon -->
+            </div>
+            <div class="col">
+                <h5 class='about-heading'>Intuitive Task Creation</h5>
+                <p>Easily create and customize your tasks to fit your workflow.</p>
+            </div>
+        </div>
+        <hr> <!-- Separator Line -->
+
+        <div class="row mb-3 align-items-center">
+            <div class="col-auto">
+                <i class="fas fa-bell fa-3x text-warning"></i> <!-- Large Icon -->
+            </div>
+            <div class="col">
+                <h5 class='about-heading'>Deadline Reminders</h5>
+                <p>Stay on top of your deadlines with timely reminders.</p>
+            </div>
+        </div>
+        <hr> <!-- Separator Line -->
+
+        <div class="row mb-3 align-items-center">
+            <div class="col-auto">
+                <i class="fas fa-star fa-3x text-info"></i> <!-- Large Icon -->
+            </div>
+            <div class="col">
+                <h5 class='about-heading'>Priority Tagging</h5>
+                <p>Organize your tasks by priority to focus on what matters most.</p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- Features Section -->
+<section class="features my-5">
+    <h2 class="text-center mb-4">Our Features</h2>
     <div class="container">
-        <div class="row">
-            <!-- Create Task -->
-            <div class="col-12 col-md-6 mb-4">
-                <div class="service-card create text-center">
-                    <i class="fas fa-plus-circle fa-3x mb-3"></i>
-                    <h4>Create Task</h4>
-                    <p>Quickly add new tasks and set details like priority and deadlines to organize your work effortlessly.</p>
+        <div class="row desc">
+            <!-- Create Task Feature -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="text-center">
+                    <i class="fas fa-plus-circle fa-3x text-blue mb-2"></i>
+                    <h5>Create Task</h5>
+                    <p>Easily create and customize tasks to suit your workflow.</p>
                 </div>
             </div>
-
-            <!-- View Task -->
-            <div class="col-12 col-md-6 mb-4">
-                <div class="service-card view text-center">
-                    <i class="fas fa-eye fa-3x mb-3"></i>
-                    <h4>View Task</h4>
-                    <p>Get a clear overview of all your tasks in one place and stay on top of your work.</p>
+            
+            <!-- View Task Feature -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="text-center">
+                    <i class="fas fa-eye fa-3x mb-2 text-green"></i>
+                    <h5>View Task</h5>
+                    <p>Effortlessly view all your tasks at a glance and stay organized.</p>
                 </div>
             </div>
-
-            <!-- Update Task -->
-            <div class="col-12 col-md-6 mb-4">
-                <div class="service-card update text-center">
-                    <i class="fas fa-edit fa-3x mb-3"></i>
-                    <h4>Update Task</h4>
-                    <p>Easily make adjustments to your tasks as requirements change and stay adaptable.</p>
+            
+            <!-- Assign Task Feature -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="text-center">
+                    <i class="fas fa-user-check fa-3x text-warning mb-2"></i>
+                    <h5>Assign Task</h5>
+                    <p>Delegate tasks easily to team members.</p>
                 </div>
             </div>
-
-            <!-- Delete Task -->
-            <div class="col-12 col-md-6 mb-4">
-                <div class="service-card delete text-center">
-                    <i class="fas fa-trash-alt fa-3x mb-3"></i>
-                    <h4>Delete Task</h4>
-                    <p>Remove completed or obsolete tasks to keep your workspace clean and organized.</p>
-                </div>
-            </div>
-
-            <!-- Assign Task -->
-            <div class="col-12 col-md-6 mb-4">
-                <div class="service-card assign-task text-center">
-                    <i class="fas fa-user-check fa-3x mb-3"></i>
-                    <h4>Assign Task</h4>
-                    <p>Delegate tasks to team members, ensuring everyone knows their responsibilities.</p>
-                </div>
-            </div>
-
-            <!-- Track Task -->
-            <div class="col-12 col-md-6 mb-4">
-                <div class="service-card track-task text-center">
-                    <i class="fas fa-tasks fa-3x mb-3"></i>
-                    <h4>Track Task</h4>
-                    <p>Monitor the progress of assigned tasks and keep projects on track efficiently.</p>
+            
+            <!-- Track Assigned Task Feature -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="text-center">
+                    <i class="fas fa-tasks fa-3x text-info mb-2"></i>
+                    <h5>Track Assigned Task</h5>
+                    <p>Monitor progress on assigned tasks of team members.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+
 
 
 

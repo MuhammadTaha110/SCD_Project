@@ -3,15 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Task; // Import your Task model
+use App\Models\Task; 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 class TaskController extends Controller
 {
+    // Show the task creation form
     public function create()
     {
-        return view('tasks.create'); // Return the view for creating a task
+        $users = User::all(); // Fetch all users
+        return view('tasks.create', compact('users')); // Pass users to the view
     }
 
+    // Store the new task in the database
     public function store(Request $request)
     {
         // Validate the incoming request data
@@ -20,55 +26,211 @@ class TaskController extends Controller
             'description' => 'nullable|string',
             'due_date' => 'nullable|date',
             'priority' => 'required|string|in:low,medium,high',
+            'assigned_to' => 'required|exists:users,id', // Ensure assigned_to is valid
         ]);
 
         // Create a new task
-        Task::create($request->all());
+        Task::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'due_date' => $request->due_date,
+            'priority' => $request->priority,
+            'assigned_by' => auth()->id(), // Current logged-in user
+            'assigned_to' => $request->assigned_to, // Assigned user
+        ]);
 
-        // Redirect back to the task creation page with a success message
-        return redirect()->route('tasks.create')->with('success', 'Task created successfully!');
+        // Redirect with a success message
+        return redirect()->route('tasks.index')->with('success', 'Task created successfully!');
     }
 
-    public function index()
+    // Display all tasks
+    public function index(Request $request)
     {
-        $tasks = Task::all(); // Retrieve all tasks from the database
-        return view('tasks.index', compact('tasks')); // Pass tasks to the view
+        $query = Task::query();
+
+        // Apply search filter
+        if ($request->filled('search')) {
+            $query->where('title', 'like', '%' . $request->search . '%')
+                  ->orWhere('description', 'like', '%' . $request->search . '%');
+        }
+
+        // Apply priority filter
+        if ($request->filled('priority')) {
+            $query->where('priority', $request->priority);
+        }
+
+        // Apply assigned_to filter
+        if ($request->filled('assigned_to')) {
+            $query->where('assigned_to', $request->assigned_to);
+        }
+
+        // Apply due_date filter
+        if ($request->filled('due_date')) {
+            $query->whereDate('due_date', $request->due_date);
+        }
+
+        $tasks = $query->get();
+        $users = User::all();
+
+        return view('tasks.index', compact('tasks', 'users'));
+    }
+    // Show the assign task form
+    public function assignForm($id)
+    {
+        $task = Task::findOrFail($id); // Retrieve the task
+        $users = User::all(); // Get all users
+
+        return view('tasks.assign', compact('task', 'users'));
     }
 
-    public function assignForm($id)
-{
-    $task = Task::findOrFail($id); // Retrieve the task to be assigned
-    $users = User::all(); // Get the list of users
+    // Assign a task to a user
+    public function assign(Request $request, $id)
+    {
+        $task = Task::findOrFail($id); // Find the task
 
-    return view('tasks.assign', compact('task', 'users'));
+        // Validate inputs
+        $request->validate([
+            'assigned_to' => 'required|exists:users,id',
+        ]);
+
+        // Update task assignment
+        $task->assigned_by = auth()->id(); // Current user
+        $task->assigned_to = $request->assigned_to;
+        $task->save();
+
+        return redirect()->route('tasks.index')->with('success', 'Task assigned successfully!');
+    }
+
+    // Search tasks by title
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('search');
+
+        // Search tasks by title or assigned user
+        $tasks = Task::with(['assignedBy', 'assignedTo'])
+            ->where('title', 'LIKE', '%' . $searchTerm . '%')
+            ->orWhereHas('assignedTo', function ($query) use ($searchTerm) {
+                $query->where('name', 'LIKE', '%' . $searchTerm . '%');
+            })
+            ->get();
+
+        return view('tasks.index', compact('tasks'))->with('searchTerm', $searchTerm);
+    }
+
+    public function destroy($id)
+{
+    $task = Task::findOrFail($id); // Find the task by ID
+    $task->delete(); // Delete the task
+
+    return redirect()->route('tasks.index')->with('success', 'Task deleted successfully!');
 }
 
-public function assign(Request $request, $id)
+
+public function edit($id)
+{
+    $task = Task::findOrFail($id); // Find the task by ID or fail
+    $users = User::all(); // Get the list of users for assignment
+
+    return view('tasks.edit', compact('task', 'users')); // Pass the task and users to the edit view
+}
+
+
+public function update(Request $request, $id)
+{
+    // Validate the incoming request data
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'due_date' => 'nullable|date',
+        'priority' => 'required|string|in:low,medium,high',
+        'assigned_by' => 'required|exists:users,id',
+        'assigned_to' => 'required|exists:users,id',
+    ]);
+
+    $task = Task::findOrFail($id); // Find the task by ID
+
+    // Update the task
+    $task->update([
+        'title' => $request->title,
+        'description' => $request->description,
+        'due_date' => $request->due_date,
+        'priority' => $request->priority,
+        'assigned_by' => $request->assigned_by,
+        'assigned_to' => $request->assigned_to,
+    ]);
+
+   
+
+    // Redirect with success message
+    return redirect()->route('tasks.index')->with('success', 'Task updated successfully!');
+}
+
+public function myTasks()
+{
+    // Fetch tasks assigned to the logged-in user
+    $tasks = Task::where('assigned_to', Auth::id())->get();
+
+    return view('tasks.myTasks', compact('tasks'));
+}
+
+
+public function updateStatus(Request $request, $id)
 {
     $task = Task::findOrFail($id);
 
-    // Validate the user ID
+    // Only allow the user to update the status of tasks assigned to them
+    if ($task->assigned_to !== auth()->id()) {
+        return redirect()->route('tasks.myTasks')->with('error', 'You cannot update this task status.');
+    }
+
+    // Validate the status input
     $request->validate([
-        'user_id' => 'required|exists:users,id',
+        'status' => 'required|in:pending,in_progress,completed',
     ]);
 
-    // Assign the user to the task
-    $task->user_id = $request->user_id;
+    // Update task status
+    $task->status = $request->status;
     $task->save();
 
-    return redirect()->route('tasks.index')->with('success', 'Task assigned successfully!');
+    return redirect()->route('tasks.myTasks')->with('success', 'Task status updated successfully!');
 }
 
 
-public function search(Request $request)
+public function showAssignedTasks(Request $request)
 {
-    $searchTerm = $request->input('search');
-    
-    // Search for tasks that match the search term in the title
-    $tasks = Task::where('title', 'LIKE', '%' . $searchTerm . '%')->get();
+    // Fetching the users who can be assigned tasks (You can customize this if needed)
+    $users = User::all(); 
 
-    return view('tasks.index', compact('tasks'))->with('searchTerm', $searchTerm);
+    // Fetching tasks with filters applied (search, priority, status, assigned_to)
+    $tasks = Task::query();
+
+    if ($request->has('search') && $request->search) {
+        $tasks = $tasks->where('title', 'like', '%' . $request->search . '%')
+                       ->orWhere('description', 'like', '%' . $request->search . '%');
+    }
+
+    if ($request->has('priority') && $request->priority) {
+        $tasks = $tasks->where('priority', $request->priority);
+    }
+
+    if ($request->has('status') && $request->status) {
+        $tasks = $tasks->where('status', $request->status);
+    }
+
+    if ($request->has('assigned_to') && $request->assigned_to) {
+        $tasks = $tasks->where('assigned_to', $request->assigned_to);
+    }
+
+    $tasks = $tasks->get();
+
+    // Pass users and tasks to the view
+    return view('tasks.assigned', compact('tasks', 'users'));
 }
+
+
+
+
+
 
 
 }
